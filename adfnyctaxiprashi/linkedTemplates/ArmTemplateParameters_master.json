@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfnyctaxiprashi"
+		},
+		"LS_nyc_sink_accountKey": {
+			"value": ""
+		},
+		"ls_dataflow_accountKey": {
+			"value": ""
+		},
+		"ls_src_ansh_accountKey": {
+			"value": ""
+		},
+		"LS_http_src_properties_typeProperties_url": {
+			"value": "https://d37ci6vzurychx.cloudfront.net"
+		},
+		"LS_nyc_sink_properties_typeProperties_url": {
+			"value": "https://nyctaxistorage001.dfs.core.windows.net/"
+		},
+		"ls_HttpServer1_properties_typeProperties_url": {
+			"value": "https://github.com"
+		},
+		"ls_dataflow_properties_typeProperties_url": {
+			"value": "https://nyctaxistorage001.dfs.core.windows.net/"
+		},
+		"ls_src_ansh_properties_typeProperties_url": {
+			"value": "https://nyctaxistorage001.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

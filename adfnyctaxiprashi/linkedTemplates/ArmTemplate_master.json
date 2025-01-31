@@ -1,0 +1,118 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfnyctaxiprashi"
+		},
+		"LS_nyc_sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_nyc_sink'"
+		},
+		"ls_dataflow_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_dataflow'"
+		},
+		"ls_src_ansh_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_src_ansh'"
+		},
+		"LS_http_src_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://d37ci6vzurychx.cloudfront.net"
+		},
+		"LS_nyc_sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nyctaxistorage001.dfs.core.windows.net/"
+		},
+		"ls_HttpServer1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://github.com"
+		},
+		"ls_dataflow_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nyctaxistorage001.dfs.core.windows.net/"
+		},
+		"ls_src_ansh_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://nyctaxistorage001.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfnyctaxiprashi_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_nyc_sink_accountKey": {
+						"value": "[parameters('LS_nyc_sink_accountKey')]"
+					},
+					"ls_dataflow_accountKey": {
+						"value": "[parameters('ls_dataflow_accountKey')]"
+					},
+					"ls_src_ansh_accountKey": {
+						"value": "[parameters('ls_src_ansh_accountKey')]"
+					},
+					"LS_http_src_properties_typeProperties_url": {
+						"value": "[parameters('LS_http_src_properties_typeProperties_url')]"
+					},
+					"LS_nyc_sink_properties_typeProperties_url": {
+						"value": "[parameters('LS_nyc_sink_properties_typeProperties_url')]"
+					},
+					"ls_HttpServer1_properties_typeProperties_url": {
+						"value": "[parameters('ls_HttpServer1_properties_typeProperties_url')]"
+					},
+					"ls_dataflow_properties_typeProperties_url": {
+						"value": "[parameters('ls_dataflow_properties_typeProperties_url')]"
+					},
+					"ls_src_ansh_properties_typeProperties_url": {
+						"value": "[parameters('ls_src_ansh_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfnyctaxiprashi_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfnyctaxiprashi_ArmTemplate_0')]"
+			]
+		}
+	]
+}
