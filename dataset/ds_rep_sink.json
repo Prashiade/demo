@@ -1,0 +1,33 @@
+{
+	"name": "ds_rep_sink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_dataflow",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_file_name_o": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().p_file_name_o",
+					"type": "Expression"
+				},
+				"folderPath": "csvfiles",
+				"fileSystem": "reporting"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

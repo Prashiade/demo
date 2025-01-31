@@ -1,0 +1,9 @@
+{
+	"name": "adfnyctaxiprashi",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "738fba91-2588-45e0-b972-f18f1a0d02e7",
+		"tenantId": "a1eeace2-4d2d-4d59-9d90-8fc7007ba56c"
+	}
+}
